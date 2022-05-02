@@ -1,0 +1,9 @@
+Instalar o babel: npm i -D "@babel/cli" "@babel/preset-env" "@babel/core"
+Transformar o código para o babel: npx babel main.js -o bundle.js --presets=@babel/env
+colocar no package.json = "babel": "babel ./main.js -o ./bundle.js --presets=@babel/env -w"
+comando para rodar em live babel : npm run babel
+
+
+
+
+
