@@ -1,0 +1,16 @@
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.medidas th, td{
+    background-color: #ddd;
+    height: 120px;
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.medidas .descricao {
+    width: 100%;
+}

@@ -1,0 +1,38 @@
+/* Podemos selecionar atributos padroes ou até mesmo criar um atributo novo no html e 
+   seleciona-lo no CSS utilizando conchetes '[', é util para que caso envie um valor via JS 
+   para o atributo, possamos estiliza-lo conforme este valor*/
+
+[meu-atributo] {
+    color: red;
+}
+
+/*usando o atributo e acionando o caso o valor seja verdadeiro*/
+[meu-atributo2 ="true"] {
+    color: blue;
+}
+
+/*selecionando um atributo padrao do html 'checked'*/
+[checked] {
+   width: 50px;
+   height: 50px;
+}
+
+/*Usando a expressao '~=' caso o valor especificado seja encontrado no atributo, a formatacao sera aplicada */
+[meu-atributo3 ~="valor2"] {
+    color: yellow;
+}
+
+/*Usando a expressao '^=' caso o valor comece com o especificado ele formatara o texto, no caso o valor é preto e especifiquei 'pr', sendo verdadeiro*/
+[meu-atributo4 ^="pr"] {
+    color: black;
+}
+
+/*Usando a expressao '$=' caso o valor termine com o especificado ele formatara o texto, no caso o ultimo valor é cinza e especifiquei 'nza', sendo verdadeiro*/
+[meu-atributo5 $="nza"] {
+    color: purple;
+}
+
+/*Usando a expressao '*=' caso o valor tenha os caracteres 'to branco' contido, o valor retornara verdadeiro*/
+[meu-atributo6 *="to branco"] {
+    color: brown;
+}

@@ -1,0 +1,38 @@
+/*Por padrao, o navegador colocar margin e padding na pagina, usamos as configuracoes abaixo para reseta-las*/
+* {
+    margin:0;
+    padding: 0;
+}
+
+/*Usamos float para que as divs com tamanho menor não tomem todo o espaco 
+lateral, seria o mesmo que a div falar 'esse é o meu espaco, pode usar o 
+resto'*/
+.grid .col{
+ 
+    height: 300px;
+    width: 33.33%;
+    float: left;
+    padding: 20px 10px 20px 20px ;
+    box-sizing: border-box;
+}
+
+/*Mexendo no conteudo dentro do grid*/
+.grid .conteudo{
+    width: 100%;
+    height: 100%;
+
+
+    background-color: red;
+}
+
+/*Como o grid não tem tamanho definido, os proxomos elementos irao
+ aparecer de maneira adjacente a ele, então podemos usar um pseudo 
+ elemento after, para que, apos a criacao da ultima div, ele limpe 
+ ambos os lados para que assim os proximos elementos fiquem abaixo dele*/
+.grid::after{
+    content: '...';
+    display: block;
+    clear: both;
+
+}
+    

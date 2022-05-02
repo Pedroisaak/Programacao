@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 15vw 85vw;
+    grid-template-rows: 10vh 80vh 10vh; 
+    background-color: yellow;
+    grid-template-areas: 
+    'cabecalho divLogin'
+    'nav main'
+    'rodape rodape' ;
+
+
+}
+
+.grid .cabecalho {
+    grid-area: cabecalho;   
+    display: flex;
+    background-color: red;
+}
+
+.grid .divLogin {
+    grid-area: divLogin;   
+    display: flex;
+    background-color: purple;
+}
+
+
+.grid .main {
+    grid-area: main;   
+    background-color: darkcyan;
+}
+
+.grid .nav {
+    grid-area: nav;   
+    background-color: darkred;
+
+}
+
+
+
+
+.grid .rodape {
+    grid-area: rodape;   
+    background-color: darkorange;
+}
+

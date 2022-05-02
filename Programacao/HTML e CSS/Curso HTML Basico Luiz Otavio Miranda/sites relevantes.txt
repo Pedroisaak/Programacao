@@ -1,0 +1,2 @@
+https://validator.w3.org/                                          valida codigos html procurando erros
+https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element          wiki de tags e resumo dos mesmos
