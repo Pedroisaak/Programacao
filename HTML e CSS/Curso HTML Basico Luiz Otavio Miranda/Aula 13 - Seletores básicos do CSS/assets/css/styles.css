@@ -1,0 +1,57 @@
+/*chamando uma tag literal, sem ser por id ou classe, o problema é que todas as tags div sofreram as mudancas*/
+div {
+    font-weight: bold;
+}
+
+/*sendo mais especifico, chamando todos 'h1' que estao dentro de algum 'div'*/
+div h1 {            
+    font-size: large;
+}
+/*aqui estou especificando que todos os 'h1' e todos os 'p' que estao dentro da 'div' sofrerao as mudancas, uso a ',' para separar os chamados*/
+div h1,
+div p {            
+    margin: 20px;
+}
+
+/*chamando uma tag pela id, tudo que estiver dentro da tag name 'div1 div sofrera as mudancas*/
+#div1{                  
+    font-style: italic;
+}
+/* sendo mais especifico, chamando a tag 'p' que esteja dentro de uma tag name div2 */
+#div2 p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+/*Chamando a classe cabecalho para edita-lo*/    
+.cabecalho{         
+    color: red;
+}
+
+/*Chamando a classe conteudo principal e especificando as alteracoes para outra classe, usamos para isto espaco e o nome da outra classe*/   
+.conteudo-principal .cabecalho{         
+    color: blue;
+}
+   
+
+/*Chamando a classe conteudo principal e especificando as alteracoes para uma tag que tenha a classe 'cabecalho*/
+.conteudo-principal h1.cabecalho{         
+    text-align: center;
+}    
+
+/*Sendo extremamente especifico no caminho para mudar o paragrafo, apenas para fins de aprendizado, visto que raramente é usado assim*/
+body div.conteudo-principal p.paragrafo{         
+    text-align: justify;
+}
+
+/* o sinal de '>' 'chield selector'  serve para especificar a filha dentro de mae e não aplica as configuracoes para os herdeiros da 'filha*/
+.mae > .filha {
+    color: red;
+}
+
+
+
+.default-padding {
+   padding: 20px;
+}
+
+
+

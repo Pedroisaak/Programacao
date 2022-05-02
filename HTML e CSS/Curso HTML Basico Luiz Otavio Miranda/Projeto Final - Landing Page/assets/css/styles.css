@@ -1,0 +1,108 @@
+:root {
+    --primary-color: #0A1128;               /*HTML também podemos declarar variaveis, aqui no caso declaramos para podermos salvar as cores que iremos utilizar*/
+    --white-color: #FFFFFF;
+    --gap: 3rem;                               /*Savamos um gap padrao para o site*/
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    color: var(--primary-color);                    /*Chamamos uma variavel*/
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  h1 {
+    font-size: 6rem;
+    text-transform: uppercase;
+  }
+  
+  h1 {
+    font-size: 6rem;
+    text-transform: uppercase;
+  }
+  
+  h2 {
+    font-size: 5.5rem;
+  }
+  
+  h3 {
+    font-size: 5rem;
+  }
+  
+  h4 {
+    font-size: 4.5rem;
+  }
+  
+  h5 {
+    font-size: 4rem;
+  }
+  
+  h6 {
+    font-size: 3.5rem;
+  }
+  
+  .main-bg {
+    background-image: url('../img/main-bg.svg');        /*Definimos uma classe para podermos chamar as configuracoes de background e cor da fonte*/
+    background-size: cover;
+    background-position: center center;
+    color: var(--white-color);
+  }
+  
+  .white-bg {
+    background: var(--white-color);                     /*Outra classe para quando fizermos outra secao, terá fundo branco*/
+  }
+  
+  .main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--gap);
+  }
+  
+  .section {
+    min-height: 100vh;
+  }
+
+  .menu {
+    background-color: var(--white-color);
+    position: fixed;                       /*Deixamos a posicao fixa do cabacalho, mesmo dando scroll o cabecalho ficara fixo na tela*/
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .menu-content{
+    display: flex;                        /*Foi transformado em flex para podemos trabalhar com os dois conteudos no menu-content*/
+    justify-content: space-between;       /*Funcao do flex para separamos a logo no canto esquero e a li no canto direito*/
+    align-items: center;                  /*Alinha os itens no eixo principal do flex*/
+  }
+
+  .menu ul{
+    list-style: none;                     /*Tiramos as bolinhas que por padrao vem no ul*/
+    display: flex;
+  }
+
+  .menu ul li a{
+    display: block;                     /*Transformamos cada link em bloco para trabalharmos melhor*/
+  }
+
+  .menu h1 {
+    font-size: 2.3rem;
+  }
+
+  .menu h1 a {
+    color: var(--primary-color);
+    text-decoration: none;            /*tiramos dos links o underline que vem por padrao*/
+  }

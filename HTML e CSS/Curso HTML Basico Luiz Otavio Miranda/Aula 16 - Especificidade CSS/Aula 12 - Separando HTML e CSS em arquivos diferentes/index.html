@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML e CSS</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+
+
+</head>
+<body>
+    <p> No css, existe prioridade de chamadas, caso voce insira um estilo diretamente na tag, ela tem preferencia a um chamado por id e este por classes, atributos e 
+        pseudo-classes estes tem prioridade com elementos e pseudo elementos
+
+        <pre>
+        <code>
+            .especificidade-css th, td, table{
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 10px;
+                text-align: center;
+            }
+        </code>    
+        <hr>
+
+    </pre>
+    <p> No caso acima temos uma especificidade classe e um elemento na conta da tabela abaixo ficaria 0 0 1 1 </p>
+    </p>
+
+    <pre>
+        <code>
+            #tabela th, #tabela td, #tabela table{
+                border: 1px solid red;
+                border-collapse: collapse;
+                padding: 10px;
+                text-align: center;
+            }
+        </code>
+    </pre>
+
+    <p> Neste outro, como chamamos pelo id, a especificidade é maior 0 1 0 1, sendo assim, entre a regra de cima e esta, a configuracao sera aplicada por esta, visto que tem maior especificidade </p>
+</p>
+<hr>
+
+<p> Podemos usar também o !important para dar maxima prioridade na especificidade, mas não é recomendado </p>
+</p>
+
+
+    <table id="tabela" class="especificidade-css">
+        <h1 class="titulo">ORDERM DE ESPECIFICIDADE ESPECIFICIDADE CSS</h1>
+        <thead id="thead">   
+            <tr>
+                <th>STYLE</th>
+                <th>ID</th>
+                <th>CLASS ATRI. P.CLASS</th>
+                <th>ELEMENTOS P.ELEMENTOS</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

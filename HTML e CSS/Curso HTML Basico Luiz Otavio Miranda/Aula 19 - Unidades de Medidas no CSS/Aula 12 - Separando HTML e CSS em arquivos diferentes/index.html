@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medidas CSS</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+
+
+</head>
+<body>
+    <div>
+        <h1>Tamanhos e Medidas </h1>
+        <table class="medidas">
+            <thead>
+                <tr>
+                    <th>Medida</th>
+                    <th>Descricao</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>PX</td>
+                        <td class="descricao">Unidade Pixel, tamanho absoluto</td>
+                    </tr>
+                    <tr>
+                        <td>EM</td>
+                        <td class="descricao"> tamanho relativo ao pai, se definirmos na chave pai uma fonte de 10px, caso usemos em para manipular a fonte e colocar 2em, o filho calculara 10px*2 = 20px</td>
+                    </tr>
+                    <tr>
+                        <td>REM</td>
+                        <td class="descricao">O REM vem como sucessor do EM e ambos compartilham a mesma lógica de funcionamento (font-size), porém a forma de implementação é diferente. Enquanto o em está diretamente relacionado ao tamanho da fonte do elemento pai, o rem está relacionado com o tamanho da fonte do elemento root (raiz), no caso, a tag.</td>
+                    </tr>
+                    <tr>
+                        <td>PORCENTAGEM %</td>
+                        <td class="descricao">Unidade de medida relativa a tela, caso o usuario coloque width de 50%, a tag sempre ocupara metade da tela</td>
+                    </tr>
+                    <tr>
+                        <td>VIEWPORT</td>
+                        <td class="descricao">Viewport nada mais é que a área visível de uma página web para o seu usuário, essa viewport pode variar de acordo com o dispositivo, sendo menor em celulares e maior em desktops, essa unidade se relaciona diretamente com a largura da viewport, onde 1vw representa 1% do tamanho da largura dessa área visível.</td>
+                    </tr>
+                </tbody>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

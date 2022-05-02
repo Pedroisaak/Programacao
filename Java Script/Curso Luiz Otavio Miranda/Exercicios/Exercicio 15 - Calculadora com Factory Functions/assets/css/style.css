@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Ms+Madi&family=Patua+One&family=Press+Start+2P&display=swap');
+:root {
+  --primary-color: rgb(17, 86, 102);
+  --primary-color-darker: rgb(9, 48, 56);
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--primary-color);
+  font-family: 'Open sans', sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+.container {
+  max-width: 940px;
+  margin: 50px auto;
+  background: rgb(201, 199, 199);
+  padding: 20px;
+  border-radius: 20px;
+  font-family: 'Patua One', cursive;
+}
+
+.container h1 {
+  text-align: center;
+  max-width: 540px;
+}
+
+form input, form label, form button {
+  display: flex;
+  width: 25%;
+  margin-bottom: 2px;
+  text-align:center;
+}
+
+form input {
+  font-size: 24px;
+  height: 60px;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+}
+
+form input:focus {
+  outline: 1px solid var('grey');
+}
+
+form input {
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: 700;
+  height: 80px;
+  width: 20%;
+  cursor: pointer;
+  margin: 3px;
+  margin-top: 3px;
+  font-size: 50px;
+  text-align:center;
+  text-align: center; line-height: 65px;
+  justify-content: center;
+}
+
+form button:hover {
+  background: var(--primary-color-darker);
+}
+
+footer {
+  font-family: 'Patua One', cursive;
+  font-size: 40px;
+
+}
+.grid-btn {
+  display: flex;
+  flex-direction: row;
+    flex-wrap: wrap;
+    text-align:center;  
+}
+.visor {
+  display:block;
+  position:static;
+  width: 500px;
+  margin-bottom: 20px;
+}
+.formulario {
+  max-width: 600px;
+  display: flex;
+  flex-direction: row;
+    flex-wrap: wrap;
+    text-align:center;
+}
+.historico {
+  
+  float: right;
+  position:sticky;
+  align-content: center;
+  max-height: 70vh;
+  font-size: 15px;
+  margin-right: 30px;
+  border: solid;
+  border-radius: 10px;
+  padding: 30px;
+  line-height: 1px;
+}
+
+.historico h1 {
+  font-size: 25px;
+}

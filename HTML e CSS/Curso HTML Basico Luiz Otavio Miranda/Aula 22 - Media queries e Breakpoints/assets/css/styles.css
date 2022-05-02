@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+
+
+.grid .col{
+
+    padding: 5px;
+    width: 33.33%;
+    height: 300px;
+    float: left;
+
+
+}
+
+.grid .col-content {
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+}
+
+/*Usando @media chama a funcao para aplicar as configuracoes de aparecer apenas uma coluna caso o tamanho maximo do width seja 320px*/
+@media (max-width: 320px) {
+    .grid .col{
+       width: 100%; 
+    }
+}
+
+/*Usando @media chama a funcao para aplicar as configuracoes de aparecer duas colunas caso o tamanho minimo do width seja 321px e máximo de 768*/
+@media (min-width: 321px) and (max-width: 768px) {
+    .grid .col{
+       width: 50%; 
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .grid .col{
+       width: 25%; 
+    }
+}

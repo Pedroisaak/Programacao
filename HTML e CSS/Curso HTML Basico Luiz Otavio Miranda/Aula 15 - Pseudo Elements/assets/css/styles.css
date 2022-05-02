@@ -1,0 +1,32 @@
+ul li::after{
+    content: ' usando after, adicionei depois do elemento ';
+    color: red;
+}
+
+ul li::before{
+    content: ' usando before, coloquei antes do elemento ';
+    color: blue;
+}
+
+.first-letter::first-letter{
+    font-size: 50px;
+    padding: 10px;
+    margin: 0 0 0 20px ;
+}
+
+.first-line::first-line{
+    color: red;
+}
+
+.selection::selection{
+    background-color: #ddd;
+    color: red;
+}
+
+input{
+    width: 600px ;
+}
+
+.placeholder::placeholder{
+    color: red;
+}

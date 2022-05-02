@@ -1,0 +1,58 @@
+<!--
+    https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model
+
+    Box model nada mais é conceitos de como tratar atributos de uma quadrado ou retangulos, paginas HTML são nada mais que blocos ou retagulos, cada um com seu devido 
+    conteudo
+
+    Content  > tudo aquilo dentro do bloco
+    Padding  > preenche espaco, enchimento, estende-se do conteudo para a borda, pode se pensar que padding nada mais é que uma extensão do conteudo47
+    Border   > estende a area de preenchimento para a area que contem as bordas
+    Margin   > Estendo a area de borda com espaco vazio
+
+
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testando o Box Model</title>
+
+    <style>
+        #div1 {
+            background-color: red;
+            width: 100%;
+            height: 200px;
+            border: solid 5px blue;
+            padding: 10px;
+            background-image: url(https://blog.emania.com.br/wp-content/uploads/2021/03/pexels-pixabay-33044-scaled.jpg);
+            background-size:cover;
+            background-position: center center;
+            color: white;
+            box-sizing: border-box;
+            
+        }
+        #div2 {
+            background-color: purple;
+            width: 100%;
+            height: 200px;
+            border: solid 5px blue;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div id="div1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ea doloribus natus doloremque soluta maxime dolore? Cum ad laborum nam quibusdam fugiat dolorum sint reprehenderit, explicabo ipsam, repellendus nihil velit.
+    </div>
+    <hr>
+    <div id="div2">
+        2
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Ctrl + Shift + F = Encadeia todas as sentenças no bloco
+Alt + Shift + Seta Baixo = Copia a linha selecionada para a proxima linha
+Ctrl + D = Selecao em massa de semelhantes
+
+

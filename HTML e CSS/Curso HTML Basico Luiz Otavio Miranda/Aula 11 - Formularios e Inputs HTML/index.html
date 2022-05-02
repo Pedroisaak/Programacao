@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inputs</title>
+    <style>
+
+
+        label nome {
+            cursor: pointer;
+            display: block;
+
+        }
+
+        textarea {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section>
+        <fieldset>
+            <h1>Teste de formulario com fieldset</h1>
+            <label id="label-teste">Teste</label>
+            <form action="#" method="get" target="_blank" autocomplete="on">
+                <legend>teste</legend>
+                <p>
+                    <input type="text" id="TESTE" name="TESTE" placeholder="teste">
+                </p>
+        </fieldset>
+
+        </form>
+
+        <hr>
+
+    </section>
+
+    <section>
+        <form action="#" method="get" target="_blank">
+            <h1>PREENCHA O FORMULARIO</h1>
+
+            <p>
+                <label for="nome">Nome: </label>
+                <!--Label é um nome visivel para o input, podemos atribuir um especie de id com o 'for'-->
+                <input type="text" id="nome" name="nome" placeholder="Digite o seu nome">
+                <!-- input de texto com identificar de id e o name é um atributo para puxar os valor no backend, placeholder deixa um texto no proprio input para ajudar o usuario-->
+            </p>
+
+            <p>
+                <label for="dev1">Voce é um dev?: </label>
+                <input type="checkbox" id="dev1" name="dev1"> <br>
+                <!--tipo de input checkbox, podemos colocar o atributo 'required' para forçar o usuario preencher antes de enviar ou 'checked' para já comecar marcado-->
+                <label for="dev2">Aprendendo JS?: </label>
+                <input type="checkbox" id="dev2" name="dev2"> <br>
+                <label for="dev3">Esta gostando?: </label>
+                <input type="checkbox" id="dev3" name="dev3">
+            </p>
+
+            <p>
+                Genero: <br>
+                <label for="feminino">Feminino: </label>
+                <input type="radio" id="feminino" name="genero" value="feminino" required> <br>
+                <!--tipo de input radio, como o tipo só retorna um valor, o nome em "name" deve ser o mesmo para todos, 'value' é o valor que retorna para o servidor caso uma opcao seja selecionada-->
+                <label for="masculino">Masculino: </label>
+                <input type="radio" id="masculino" name="genero" value="masculino" required> <br>
+                <label for="Outro">Outro: </label>
+                <input type="radio" id="Outro" name="genero" value="outro" required>
+            </p>
+
+            <p>
+                <label for="date">Data: </label>
+                <input type="date" id="date" name="date">
+                <!-- input de data com identificar de id e o name, nada mais que um formulario de data-->
+            </p>
+
+            <p>
+                <label for="datetime">Data e Hora: </label>
+                <input type="datetime-local" id="datetime" name="datetime">
+                <!-- input de data com identificar de id e o name, nada mais que um formulario de data e hora-->
+            </p>
+
+
+            <p>
+                <label for="time">Hora: </label>
+                <input type="time" id="time" name="time">
+                <!-- input de data com identificar de id e o name, nada mais que um formulario de hora-->
+            </p>
+
+            <p>
+                <label for="cor">Selcione uma cor: </label>
+                <input type="color" id="cor" name="cor" value="#003d66">
+                <!-- input de cor com identificar de id e o name, o valor padrao da cor 'value' deve ser colocado em hexadecimal-->
+            </p>
+
+            <p>
+                <label for="email">Coloque seu e-mail: </label>
+                <input type="email" id="email" name="email" placeholder="Insira seu e-mail">
+                <!-- input de email com identificar de id e o name, o proprio navegador já tem um validador de email-->
+            </p>
+
+            <p>
+                <label for="file">Envie um arquivo: </label>
+                <input type="file" id="file" name="file" accept=".png">
+                <!-- input de file com identificar de id e o name, para enviar arquivos, pode-se delimitar o envio excluindo extensoes com o 'accept'-->
+            </p>
+
+            <p>
+                <label for="number">Number: </label>
+                <input type="number" id="number" name="number" placeholder="Digite um numero" min="10" max="50"
+                    step="5">
+                <!-- input de number com identificar de id e o name, para colocar numeros, 'min' serve para colocar o valor minimo e 'max' obviamente o maximo, 'step' serve para pular de 5 em 5-->
+            </p>
+
+            <p>
+                <label for="senha">Coloque seu e-mail: </label>
+                <input type="password" id="senha" name="senha" placeholder="Insira sua senha">
+                <!-- input de senha com identificar de id e o name, tem a propriedade de quando o usuario digitar a senha, esconder os numeros digitados-->
+            </p>
+
+            <p>
+                <label for="range">Senha: </label>
+                <input type="range" id="range" name="range" min="0" max="10">
+                <!-- input de range com identificar de id e o name, pode ser usado por exemplo para pesquisas de satisfacao-->
+            </p>
+
+            <p>
+                <label for="url">Coloque sua rede social: </label>
+                <input type="url" id="url" name="url" placeholder="facebook/orkut/instagem">
+                <!-- input de url com identificar de id e o name, o proprio navegador já tem um validador de url-->
+            </p>
+
+            <p>
+                <label for="search">Busca: </label>
+                <input type="search" id="search" name="search" placeholder="Insira sua busca">
+                <!-- input de busca com identificar de id e o name, tem as mesmas propriedades do text, mas com valor semantico-->
+            </p>
+
+            <p>
+                <label for="select">Selecione uma opcao: </label>
+                <select id="select" name="select">
+                    <optgroup label="Secao 1">
+                        <option value="o usuario selecionou 1" label="Isto que o usuario ve 1">
+                        <option value="o usuario selecionou 2" label="Isto que o usuario ve 2">
+                        <option value="o usuario selecionou 3" label="Isto que o usuario ve 3">
+                        <option value="o usuario selecionou 4" label="Isto que o usuario ve 4">
+                    </optgroup>
+                    <optgroup label="Secao 2">
+                        <option value="o usuario selecionou 1" label="Isto que o usuario ve 1">
+                        <option value="o usuario selecionou 2" label="Isto que o usuario ve 2">
+                        <option value="o usuario selecionou 3" label="Isto que o usuario ve 3">
+                        <option value="o usuario selecionou 4" label="Isto que o usuario ve 4">
+                    </optgroup>
+                    <!-- Select é um formulario que tem uma sintaxe diferente do imput, se abre com <select> e tem um filho <option> que é onde vai as opcoes para o usuario, podemos dividir as opcoes em secoes usando o <optgroup>-->
+            </p>
+ 
+            <p>
+                <label for="textarea">Resumo sobre voce: </label>
+                <textarea  name="textarea"  id="textarea" rows="8" cols="60"></textarea>
+                <!-- input de senha com identificar de id e o name, tem a propriedade de quando o usuario digitar a senha, esconder os numeros digitados-->
+            </p>
+
+
+
+            <p>
+                <button type="submit">Enviar</button>
+                <button type="reset">Reset</button>
+            </p>
+        </form>
+    </section>
+</body>
+
+</html>
