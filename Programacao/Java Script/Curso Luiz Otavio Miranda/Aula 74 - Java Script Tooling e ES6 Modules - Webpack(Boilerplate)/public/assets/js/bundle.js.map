@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","mappings":"orBACY,CAAH,GADI,CAACA,KAAM,UAEpBC,MAAM,M","sources":["webpack://projeto/./src/main.js"],"sourcesContent":["const nome = {nome: 'Pedro'}\nconst obj = {...nome}\nalert('1')\n"],"names":["nome","alert"],"sourceRoot":""}
