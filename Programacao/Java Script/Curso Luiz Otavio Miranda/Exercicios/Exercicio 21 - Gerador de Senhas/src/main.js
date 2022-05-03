@@ -20,6 +20,7 @@ class GeradorDeSenha {
     }
 
     geraSenha(){
+        //usei aqui variaveis ao invez de expressoes regulares para maior controle
         this.number = "0123456789",
         this.uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXTZ",
         this.lowercase = "abcdefghiklmnopqrstuvwxyz"
@@ -28,8 +29,9 @@ class GeradorDeSenha {
         this.ValoresCheckbox = this.valoresCheckbox()
         this.ValoresCheckbox = this.ValoresCheckbox.toString()
         this.ValoresCheckbox = this.ValoresCheckbox.replace(/,/g,' + ')
-        this.ValoresCheckbox = eval(this.ValoresCheckbox)
-    
+        this.ValoresCheckbox = eval(this.ValoresCheckbox)//pegos todos o valores checados e transformo de string para uma notacao que pode ser usada como string
+        
+        //gera usando o metodo crypto, 'wishlist' é os caracteres que poderam ser gerados
         const gerador = (length , wishlist) =>
             Array.from(crypto.getRandomValues(new Uint32Array(length)))
               .map((x) => wishlist[x % wishlist.length])
@@ -39,6 +41,8 @@ class GeradorDeSenha {
         
 
     }
+    /* aqui selecionei pelo DOM todos os elementos 'checkbox' e caso o usuario envie o formulario, aqui irei rastrear os
+    marcados e retornar o valor do elemento marcado para uma array */
      valoresCheckbox() {
         const checkboxValues = formulario.querySelectorAll(".checkbox");
         const arrayValoresCheckbox = []
