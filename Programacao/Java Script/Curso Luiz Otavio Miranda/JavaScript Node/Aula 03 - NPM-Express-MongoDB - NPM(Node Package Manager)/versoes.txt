@@ -1,0 +1,20 @@
+Comandos NPM
+
+npm init -y                            => Começa um projeto com npm, criará o package.json para gerenciar os modulos
+npm -v                                 => Chega versao do npm
+npm install <nomeDoModulo>             => Instala um modulo
+npm install <nome_do_módulo> –save     => instala o modulo nas dependencias, podemos instalar uma versão especifica ex: npm instal express@2.1.1
+npm install <nome_do_módulo> –save-dev => instala o modulo nas dependencias de desenvolvedor
+npm update <nome_do_módulo>            => atualiza a versão do módulo.
+npm list                               => lista todos os módulos existentes no projeto.
+npm unistall <nome_do_módulo>          => desinstala um módulo do projeto.
+npm run <nome_do_script>               => roda um script do npm
+
+
+2.                          1.                          0
+major                       minor                       patch
+perde compatibilidade       mantem conpatibilidade      mantem conpatibilidade
+
+podemos controlar o que o update ira atualizar
+^2.1.1 => atualiza minor e patch
+~2.1.1 => atualiza apenas o patch
