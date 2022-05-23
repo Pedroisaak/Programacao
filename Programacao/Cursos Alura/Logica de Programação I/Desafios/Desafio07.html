@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio01</title>
+</head>
+
+<body>
+    <script>
+
+/* 
+Que tal uma dificuldade um pouco maior? Imprima todos os números entre 30 e 40 (inclusive 30 e 40), 
+porém os números 33 e 37 não devem ser impressos! No final escreva a palavra "FIM". Use o while para essa tarefa. 
+DICA: o if pode ajudá-lo!
+ */
+        
+function pulaLinha() {
+
+document.write("<br>");
+}
+
+function mostra(frase) {
+
+document.write(frase);
+pulaLinha();
+}
+
+var cont = 0
+var numero = 30
+
+while(cont <= 10){
+    if(numero == 33 || numero == 37) {
+    
+} else {
+    mostra(`o numero ${numero}`)
+}
+    numero++
+    cont++
+}
+    </script>
+</body>
+
+</html>

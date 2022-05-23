@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio01</title>
+</head>
+
+<body>
+    <script>
+
+/* 
+1 - Você pode criar uma função sorteia que recebe um número n e sorteia um número entre 0 a n, retornando esse valor. 
+Dessa forma, em vez de escrever var numeroPensado = Math.round(Math.random() * n);, você escreveria var 
+numeroPensado = sorteia(n);. Faça essa modificação, criando a nova função e utilize-a.
+
+2 - Faça com que seu jogo mostre, quando o usuário errar a tentativa, se o número que ele chutou era maior ou
+ menor ao número pensado pelo programa. */
+        
+function pulaLinha() {
+
+document.write("<br>");
+}
+
+function mostra(frase) {
+
+document.write(frase);
+pulaLinha();
+}
+
+function sorteia(){
+    numeroSorteado = parseInt(prompt("Digite um numero limitador do sorteio"))
+    return numeroSorteado
+}
+
+var numeroPensado = Math.round(Math.random() * sorteia());
+
+var chute = parseInt(prompt("Já pensei. Qual você acha que é?"));
+
+if(chute == numeroPensado) {
+
+mostra("Uau! Você acertou, pois eu pensei no " + numeroPensado);
+} else {
+
+mostra("Você errou! Eu tinha pensado no " + numeroPensado);
+}
+    </script>
+</body>
+
+</html>

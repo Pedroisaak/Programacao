@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio01</title>
+</head>
+<body>
+    <script> 
+
+/* Escreva um programa que exiba a mensagem "Nossa diferença de idade é", concatenando o resultado da subtração da sua 
+idade com a do seu irmão (ou de um amigo). A resposta pode dar negativa, sem dúvida. Não esqueça de usar as funções 
+pulaLinha e mostra e inclusive a tag <meta> para resolver problema de acentuação. */
+
+    function pulaLinha() {
+        document.write("<br>")
+    }
+
+    function mostra(mensagem) {
+        document.write(mensagem)
+    }
+
+    const idade1 = 10
+    const idade2 = 20
+
+    mostra(`A diferença entre a idade 1 e a idade 2 é:`)
+    pulaLinha()
+    mostra( `${idade1 - idade2}`)
+    
+    
+    </script>
+</body>
+</html>

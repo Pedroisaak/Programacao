@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Lampada</title>
+</head>
+
+<body>
+    <img id="lampada" src="./images/lampada-apagada.png">
+    <script>
+        const lampadaElemento = document.getElementById('lampada')
+
+        const body = document.querySelector('body')
+        body.addEventListener("click", function (event) {
+            const el = event.target
+            if (el.src.includes("apagada")) {
+                lampadaElemento.addEventListener('click', (elemento) => mudarLampada(elemento, 'acesa'))
+            }
+            if (el.src.includes("acesa"))  {
+                lampadaElemento.addEventListener('click', (elemento) => mudarLampada(elemento, 'apagada'))
+            }
+        })
+        function mudarLampada(elemento, tipo) {
+            elemento.srcElement.src = `./images/lampada-${tipo}.png`
+        }
+
+    </script>
+</body>
+
+</html>

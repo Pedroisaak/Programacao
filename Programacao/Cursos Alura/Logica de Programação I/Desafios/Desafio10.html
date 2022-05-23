@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio01</title>
+</head>
+
+<body>
+    <script>
+
+/* 
+Ao testar o código, verificamos que ele funciona! O problema é que podemos adicionar na lista de uma receita 
+ingredientes repetidos. Altere o código para que os ingredientes repetidos não possam ser adicionados. 
+Você encontra o gabarito facilmente, mas tente primeiro resolver o exercício
+ */
+        
+ var ingredientes = [];
+
+var quantidade = parseInt(prompt("Quantos ingredientes você vai adicionar?"));
+
+var contador = 1;
+
+while( contador <= quantidade) {
+
+    var ingrediente = prompt("Informe o ingrediente " + contador);
+
+    var existe = false;
+
+    for( var posicao = 0; posicao < ingredientes.length; posicao++) {
+
+        if( ingredientes[posicao] == ingrediente) {
+
+            existe = true;
+            break;
+        }
+    }
+
+    if( existe == false) {
+
+        ingredientes.push(ingrediente);
+        contador++;
+    }
+}
+
+console.log(ingredientes);
+    </script>
+</body>
+
+</html>
