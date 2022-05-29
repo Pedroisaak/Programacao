@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="600" height="600"></canvas>
+    <script>
+
+        /* 
+        Faça um grafico de colunas utilizando o canvas
+        */
+
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+
+
+        var serie2015 = [50, 25, 20, 5];
+        var serie2016 = [65, 20, 13, 2];
+        var cores = ['blue', 'green', 'yellow', 'red'];
+        var navegadores = ['Chrome', 'Firefox', 'Safari', 'Outros' ]
+
+
+
+        function desenhaTexto(x, y, texto) {
+            var tela = document.querySelector('canvas');
+            var pincel = tela.getContext('2d');
+
+            pincel.font = '25px Georgia';
+            
+            pincel.fillStyle = 'black';
+            pincel.fillText(texto, x, y);
+        }
+
+        function criaBarra(x, y, width, serie, texto) {
+            desenhaTexto(x , y, serie)
+            for (let i = 0; i <= 3; i++) {
+                if (serie === '2015') {
+                    pincel.fillStyle = cores[i];
+                    serie2015[i] = serie2015[i] * 5
+                    pincel.fillRect(x, y, width, serie2015[i]);
+                    y = y + serie2015[i]
+                    desenhaTexto(x, y , navegadores[i])
+                    
+                }
+                if (serie === '2016') {
+                    pincel.fillStyle = cores[i];
+                    serie2016[i] = serie2016[i] * 5
+                    pincel.fillRect(x, y, width, serie2016[i]);
+                    
+                    y = y + serie2016[i]
+                    desenhaTexto(x, y, navegadores[i])
+                }
+            }
+        }
+
+        criaBarra(40, 40, 100, '2015')
+        criaBarra(220, 40, 100, '2016')
+        
+
+
+
+
+
+    </script>
+
+
+    <!-- (300, 200, 100, 0, 2*3.14); -->
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <canvas width="600" height="600"></canvas>
+
+    <!-- Sua tarefa será fazer uma bolinha pulsar, ou seja, seu raio deve ter tamanho mínimo de 20 e tamanho
+         máximo de 30. Sendo assim, de 20 até 30, o raio deve ser incrementado de um em um e quando o valor do 
+         raio ultrapassar o máximo, ele deve sofrer um decremento de um -->
+
+
+    <script>
+
+    var raio = 20
+    var raioDecremetal = 1      
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0, 0, 600, 400);
+
+    function desenhaCirculo(x, y, raio, cor) {
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+
+    function limpaTela() {
+
+        pincel.clearRect(0, 0, 600, 400);
+    }
+
+    function bolaPulsante() {
+        limpaTela();
+        desenhaCirculo(20, 20, raio,'red')
+        if(raio > 30) {
+            raioDecremetal = -1
+        }
+        if(raio < 20){
+            raioDecremetal = 1
+        }
+        raio = raio + raioDecremetal
+        
+    }
+
+    setInterval(bolaPulsante, 50);
+        
+    </script>
+
+
+    <!-- (300, 200, 100, 0, 2*3.14); -->
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Jokempo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="row">
+        <h1>Escolha seu movimento</h1>
+    </div>
+    <div class="row">
+        <div class="card" id="rock-player" onclick="move('rock')">
+            <img src="./images/images/png/rock.png" alt="" style="width: 100px">
+        </div>
+        <div class="card" id="paper-player" onclick="move('paper')">
+            <img src="./images/images/png/paper.png" alt="" style="width: 100px">
+        </div>
+        <div class="card" id="scissor-player" onclick="move('scissor')">
+            <img src="./images/images/png/scissor.png" alt="" style="width: 100px">
+        </div>
+        <div class="card" id="spock-player" onclick="move('spock')">
+            <img src="./images/images/png/spock.png" alt="" style="width: 100px">
+        </div>
+        <div class="card" id="lizard-player" onclick="move('lizard')">
+            <img src="./images/images/png/lizard.png" alt="" style="width: 100px">
+        </div>
+    </div>
+
+    <div class="row">
+        <h1>Escolha do computador</h1>
+    </div>
+    <div class="row">
+        <div class="card" id="rock-pc">
+            <img src="./images/images/png/rock.png" alt="" style="width: 100px">
+        </div>
+        <div class="card" id="paper-pc">
+            <img src="./images/images/png/paper.png" alt="" style="width: 100px">
+        </div>
+        <div class="card" id="scissor-pc">
+            <img src="./images/images/png/scissor.png" alt="" style="width: 100px">
+        </div>
+        <div class="card" id="spock-pc">
+            <img src="./images/images/png/spock.png" alt="" style="width: 100px">
+        </div>
+        <div class="card" id="lizard-pc">
+            <img src="./images/images/png/lizard.png" alt="" style="width: 100px">
+        </div>
+    </div>
+    <div class="row">
+        <h1 id="winner">-</h1>
+    </div>
+
+    <div class="row">
+        <h1 id="wins" class="results">WINS: 0 </h1>
+        <h1 id="draws" class="results">DRAWS: 0 </h1>
+        <h1 id="loses" class="results">LOSES: 0 </h1>
+
+    </div>
+    
+    <script src="./index.js"></script>
+    
+</body>
+</html>

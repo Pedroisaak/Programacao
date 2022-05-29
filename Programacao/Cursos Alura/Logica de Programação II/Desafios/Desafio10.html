@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="600" height="600"></canvas>
+    <script>
+
+        /* 
+        limitar o tamanho de crescimento das bolinhas, ou seja, quero combinar com você que o raio não pode ultrapassar 40. 
+        Além disso, se o usuário clicar na tela com a tecla ALT pressionada, o raio deve diminuir 5. Para saber se a tecla ALT
+        está pressionada, fazemos evento.altKey
+        */
+
+        var raio = 10
+        var i = 0
+        var corAtual = 0
+        const cores = ['blue', 'red', 'green']
+
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+        pincel.fillStyle = 'grey';
+        pincel.fillRect(0, 0, 600, 400);
+
+        function desenhaCirculo(evento) {
+
+            if (evento.shiftKey && evento.altKey) {
+            alert('Só aperte uma tecla por vez, por favor!')
+            }
+
+            if (evento.shiftKey && raio + 10 <= 40) {
+                raio = raio + 10
+
+            }
+            if(evento.altKey && raio -5 >= 10){
+                raio = raio - 5
+
+            }
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
+            pincel.fillStyle = cores[corAtual];
+            pincel.beginPath();
+            pincel.arc(x, y, raio, 0, 2 * 3.14);
+            pincel.fill();
+        }
+
+        function mudaCor(cor) {
+            if (mudaCor) {
+                corAtual++
+            }
+            if (corAtual >= cores.length) {
+                corAtual = 0
+            }
+            return false
+        }
+
+        tela.onclick = desenhaCirculo;
+        tela.oncontextmenu = mudaCor;
+
+
+
+
+
+    </script>
+
+
+    <!-- (300, 200, 100, 0, 2*3.14); -->
+
+
+
+
+</body>
+
+</html>
