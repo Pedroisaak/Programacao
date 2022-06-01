@@ -24,11 +24,17 @@ function verificaColisao(){
     for(let i = 0; i < imagemCarros.length; i++){
        colisao = collideRectCircle(xCarros[i], yCarros[i], comprimentoCarro, alturaCarro, xAtor, yAtor, 15)
        if(colisao){
-        pontosColidiu += 1
+           if(verificaPontosMaiorQuezero()){
+        pontosPassou -= 1
+    }
         somDaColisao.play()
            voltaPosicaoInicialAtor()
        }
     }
+}
+
+function verificaPontosMaiorQuezero(){
+ return pontosPassou > 0
 }
 
 function atravessou(){
