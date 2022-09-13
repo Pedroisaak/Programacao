@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const { v4: uuidv4 } = require('uuid');
+const { json } = require('express');
 
 const app = express();
 
@@ -9,59 +10,107 @@ app.use(cors());
 app.use(express.json());
 
 const users = [];
-const todos = [];
+
+function getTodoId(id, user) {
+  const getID = user.todos.find((findID) => findID.id === id)
+  return getID
+}
 
 function checksExistsUserAccount(request, response, next) {
-  // Complete aqui
+  const { username } = request.headers
+  const user = users.find((user) => user.username === username)
+
+  if (!user) {
+    return response.status(400).json({ error: "Usuário não existe " })
+  }
+
+  request.user = user;
+
+  return next();
 }
 
 app.post('/users', (request, response) => {
-  // Complete aqui
-  const {name, username} = request.headers
-  users.push ({
-    id: uuidv4(), //usamos o uuid v4 para gerar um id aleatório para o usuário
+  const { name, username } = request.headers
+  const user = users.find((user) => user.username === username)
+  if (user) {
+    return response.status(400).json({ error: "Usuário já existe" })
+  }
+  users.push({
+    id: uuidv4(), 
     name,
     username,
     todos: [],
-});
-  console.log(users)
+  });
 
-  return response.status(201).json('Usuário cadastrado com sucesso').send()
+  return response.status(201).json(users).send()
+
 });
 
 app.get('/todos', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
+  const { user } = request;
+
+  return response.json(user.todos)
 
 });
 
 app.post('/todos', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
-  const {title, deadline} = request.body
+  const { title, deadline } = request.body
 
-  const {username} = request;
+  const { user } = request;
 
   const TodoCreation = {
-    id: 'uuid', // precisa ser um uuid
-    title: 'Nome da tarefa',
-    done: false, 
-    deadline: '2021-02-27T00:00:00.000Z', 
-    created_at: '2021-02-22T00:00:00.000Z'
+    id: uuidv4(),
+    title,
+    done: false,
+    deadline: new Date(deadline).toLocaleDateString('pt-BR', { timeZone: 'UTC' }),
+    created_at: new Date().toLocaleDateString('pt-BR', { timeZone: 'UTC' })
   }
 
-  username.todos.push(TodoCreation);
-  return response.status(201).send();
+  user.todos.push(TodoCreation);
+  return response.status(201).json(user.todos).send();
 });
 
 app.put('/todos/:id', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
+  const { title, deadline } = request.body;
+  const { id } = request.params;
+  const { user } = request
+
+  if (!getTodoId(id, user)) {
+    response.status(400).json('Tarefa não encontrada').send()
+  }
+
+  getTodoId(id, user).title = title
+  getTodoId(id, user).deadline = deadline
+  response.status(201).json(getTodoId(id, user))
 });
 
 app.patch('/todos/:id/done', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
+  const { id } = request.params;
+  const { user } = request
+
+  if (!getTodoId(id, user)) {
+    response.status(400).json('Tarefa não encontrada').send()
+  }
+
+  getTodoId(id, user).done = true
+
+  response.status(201).json(getTodoId(id, user)).send()
+
 });
 
 app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
+  const { id } = request.params;
+  const { user } = request
+
+  let index = user.todos.indexOf(getTodoId(id, user)) //provavel que tenha uma maneira mais eficiente
+
+  if (!getTodoId(id, user)) {
+    return response.status(400).json('Tarefa não encontrada').send()
+  }
+
+  user.todos.splice(index, 1)
+
+  return response.status(201).json(getTodoId(id, user)).send()
 });
 
 module.exports = app;
