@@ -1,18 +1,26 @@
-import { Category } from "../model/Category";
+import { Category } from "../../model/Category";
+import {
+    ICategoriesRepository,
+    ICreateCategoryDTO,
+} from "../ICategoriesRepository";
 
-// DTO - Data Transfer Object
-interface IcreateCategoryDTO {
-    name: string;
-    description: string;
-}
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
     private categories: Category[];
+    // Singleton - > para instanciar apenas uma vez e não perder os valores da array
+    private static INSTANCE: CategoriesRepository;
 
-    constructor() {
+    private constructor() {
         this.categories = [];
     }
 
-    create({ description, name }: IcreateCategoryDTO): void {
+    public static getInstance(): CategoriesRepository {
+        if (!CategoriesRepository.INSTANCE) {
+            CategoriesRepository.INSTANCE = new CategoriesRepository();
+        }
+        return CategoriesRepository.INSTANCE;
+    }
+
+    create({ description, name }: ICreateCategoryDTO): void {
         const category = new Category();
 
         /* 
