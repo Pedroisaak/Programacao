@@ -10,6 +10,7 @@ usersRoutes.post("/", (request, response) => {
 });
 
 usersRoutes.get("/", (request, response) => {
+  response.json({ msg: "This is CORS-enabled for all origins!" });
   return listUsersController.handle(request, response);
 });
 
