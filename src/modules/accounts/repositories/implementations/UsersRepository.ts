@@ -37,6 +37,11 @@ class UsersRepository implements IUsersRepository {
     const user = this.users.find((user_name) => user_name.name === name);
     return user;
   }
+
+  findById(id: string): any {
+    const user = this.users.find((user_id) => user_id.id === id);
+    return user;
+  }
 }
 
 export { UsersRepository };
