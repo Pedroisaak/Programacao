@@ -1,3 +1,5 @@
+import { User } from "../model/Auth";
+
 class AuthRepository {
   private users: any; //Iria criar o DTO do repositório, mas não existe tal tarefa
 
@@ -5,7 +7,7 @@ class AuthRepository {
     this.users = [];
   }
   create({ email, password }: any): void {
-    const user = new User(); //Criar o model
+    const user = new User();
 
     Object.assign(user, {
       email,
