@@ -9,7 +9,5 @@ class AuthRepository {
   async register() {}
 
   async userExists() {}
-
-  validatedUser() {}
 }
 export { AuthRepository };
