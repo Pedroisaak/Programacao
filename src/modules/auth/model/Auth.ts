@@ -7,16 +7,4 @@ const AuthSchema = new mongoose.Schema({
 
 const LoginModel = mongoose.model("Login", AuthSchema);
 
-class Login {
-  constructor() {}
-
-  async login() {}
-
-  async register() {}
-
-  async userExists() {}
-
-  validatedUser() {}
-}
-
-export { Login };
+export { LoginModel };
