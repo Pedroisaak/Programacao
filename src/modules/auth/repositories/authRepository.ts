@@ -1,13 +1,12 @@
-import { LoginModel } from "../model/Auth";
-import mongoose from "mongoose";
+import { Model } from "mongoose";
 
-class AuthRepository {
-  constructor() {}
+export class UsersRepository {
+  private repository: Model<any>;
 
-  async login() {}
+  constructor(repository: Model<any>) {
+    this.repository = repository;
+  }
 
-  async register() {}
-
-  async userExists() {}
+  create(): any {}
+  update(): any {}
 }
-export { AuthRepository };
