@@ -1,3 +1,3 @@
-export function add() {}
-export function edit() {}
-export function del() {}
+export class AuthService {
+
+}
