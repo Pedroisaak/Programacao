@@ -1,21 +1,13 @@
-import { User } from "../model/Auth";
+import { Model } from "mongoose";
 
-class AuthRepository {
-  private users: any; //Iria criar o DTO do repositório, mas não existe tal tarefa
+export class UsersRepository {
+  private repository: Model<any>;
 
-  private constructor() {
-    this.users = [];
+  constructor(repository: Model<any>) {
+    this.repository = repository;
   }
-  create({ email, password }: any): void {
-    const user = new User();
 
-    Object.assign(user, {
-      email,
-      password,
-      created_at: new Date(),
-    });
-
-    this.users.push(user);
-  }
+  findById(): any {}
+  findByEmail(): any {}
+  resetPassword(): any {}
 }
-export { AuthRepository };
