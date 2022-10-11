@@ -7,6 +7,7 @@ export class UsersRepository {
     this.repository = repository;
   }
 
-  create(): any {}
-  update(): any {}
+  findById(): any {}
+  findByEmail(): any {}
+  resetPassword(): any {}
 }
