@@ -6,5 +6,4 @@ const AuthSchema = new mongoose.Schema({
 });
 
 const LoginModel = mongoose.model("Login", AuthSchema);
-
 export { LoginModel };
