@@ -1,11 +1,13 @@
+require("dotenv").config();
 import express from "express";
-import { router } from "./routes";
-import cors from "cors";
+
+import setupRoutes from "./router";
+import setupMiddlewares from "./sharred/middlewares";
 
 const app = express();
 
-app.use(cors());
+setupMiddlewares(app);
+setupRoutes(app)
+export default app
 
-app.use(router);
 
-app.listen(3333, () => console.log("Server is running!"));
