@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 
 export function CreateMission(request:Request, response: Response): Response {
-  const {title, description} = request.body
-  const assetFile = request.files
+  const {title, description, asset} = request.body
 
   try {
 
@@ -15,8 +14,8 @@ export function CreateMission(request:Request, response: Response): Response {
 }
 
 export function UpdateMission(request:Request, response:Response): Response {
-  const {title, description} = request.body
-  const assetFile = request.files
+  const {title, description, asset} = request.body
+  
   try {
 
     response.sendStatus(201)
