@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { notImplemented } from "../../sharred/helpers/http-helper";
+import { Controller } from "../../sharred/adapters/express-route-controller-adapter";
+import { login, logout, forgotPassword } from "./authController";
 
 export default (router: Router): Router => {
-  router.post("/v1/login", (request, response) => {
-    return response.send(notImplemented());
-  });
+
+  router.post("/v1/login", Controller(login));
+  router.post("/v1/logout", Controller(logout));
+  router.post("/v1/forgotPassword", Controller(forgotPassword));
 
   return router
 };

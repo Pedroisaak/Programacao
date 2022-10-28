@@ -1,25 +1,23 @@
-import { Request, Response } from "express";
+import { notImplemented } from "../../sharred/helpers/http-helper";
+import { HttpResponse } from "../../sharred/protocols";
 
-export function CreateAboutUs(request:Request, response: Response): Response {
-  const {title, description} = request.body
-  try {
-
-    response.sendStatus(201)
-
-  } catch(e) {
-
-    response.sendStatus(500)
-  }
+export function listAboutUs(): HttpResponse {
+  return notImplemented()
 }
 
-export function UpdateAboutUs(request:Request, response:Response): Response {
-  const {title, description} = request.body
-  try {
-
-    response.sendStatus(201)
-
-  } catch(e) {
-
-    response.sendStatus(500)
-  }
+export function createAboutUs(data): HttpResponse {
+  return notImplemented()
 }
+
+export function showAboutUs(data): HttpResponse {
+  return notImplemented()
+}
+
+export function updateAboutUs(data): HttpResponse {
+  return notImplemented()
+}
+
+export function deleteAboutUs(data): HttpResponse {
+  return notImplemented()
+}
+
