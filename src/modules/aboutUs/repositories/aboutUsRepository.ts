@@ -1,14 +1,29 @@
-import { Model } from "mongoose";
-import {AboutUsModel} from "../model/AboutUs"
+import MongoDBRepository from "../../../sharred/adapters/mongodb-repository-adapter";
 
 export class AboutUsRepository {
-  private repository: Model<any>;
+  private repository: any;
 
-  constructor(repository: Model<any>) {
-    this.repository = repository;
+  constructor(repository: any) {
+    this.repository = new MongoDBRepository('aboutUs');
   }
 
-  async createAbouUs(): Promise<void> {}
-  async updateAbouUs(): Promise<void> {}
-  async deleteAboutUs(): Promise<void> {}
+  async list(data): Promise<any> {
+    return this.repository.find(data)
+  }
+
+  async create(data): Promise<any> {
+    return this.repository.insertOne(data)
+  }
+  
+  async show(id): Promise<any> {
+    return this.repository.findOne({ _id: id })
+  }
+  
+  async update(id, data): Promise<any> {
+    return this.repository.findOneAndUpdate(id, data)
+  }
+  
+  async delete(id): Promise<any> {
+    return this.repository.findOneAndDelete({ _id: id })
+  }
 }

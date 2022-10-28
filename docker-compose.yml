@@ -1,12 +1,9 @@
-version: '3'
+version: '3.2'
 
 services:
   mongo:
     container_name: ${PROJECT_NAME}_mongo
     image: mongo
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
     restart: on-failure
     volumes:
       - ./.docker/mongo:/data/db
