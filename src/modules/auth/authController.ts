@@ -1,18 +1,15 @@
-import { Request, Response } from "express";
+import { notImplemented } from "../../sharred/helpers/http-helper";
+import { HttpResponse } from "../../sharred/protocols";
 import { ILoginDTO } from "./IloginDto";
 
-export function login({ email, password }: ILoginDTO) {
-  try {
-    //Login
-  } catch (e) {
-    //Erro
-  }
+export function login({ email, password }: ILoginDTO): HttpResponse {
+  return notImplemented()
 }
 
-export function logOut(response: Response) {
-  response.redirect(""); //redirect para o index quando for criado
+export function logout(): HttpResponse {
+  return notImplemented()
 }
 
-export function forgotPassword(email: ILoginDTO) {
-  //Buscar usuário no db e dar update no mesmo
+export function forgotPassword(email: ILoginDTO): HttpResponse {
+  return notImplemented()
 }
