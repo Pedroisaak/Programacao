@@ -1,68 +1,66 @@
+import { Model } from "mongoose";
 import { MongoHelper } from "../db/mongoDb";
-
 export default class MongoDBRepository {
-  private readonly collection: any;
-
-  constructor(private readonly collectionName: string) {
-    this.collection = new Promise((resolve) =>
-      resolve(MongoHelper.getCollection(this.collectionName))
-    );
+  constructor(private readonly model: Model<any>) {
+    this.model = model;
   }
 
   // FIND
   async find(query) {
-    const collection = await MongoHelper.getCollection(this.collectionName)
-    const data = collection.find(query);
-    return MongoHelper.mapper(data)
+    return (await this.model.find(query).exec()).map(MongoHelper.mapper);
   }
 
   async findOne(query) {
-    const collection = await MongoHelper.getCollection(this.collectionName)
-    const data = collection.findOne(query);
-    return MongoHelper.mapper(data)
+    try {
+      const document = await this.model.findOne(query).exec();
+      return MongoHelper.mapper(document);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async findById(query) {
+    try {
+      return MongoHelper.mapper(await this.model.findById(query).exec());
+    } catch (error) {
+      return null;
+    }
   }
 
   // INSERT
   async insertOne(data) {
-    const collection = await MongoHelper.getCollection(this.collectionName)
-    return collection.insertOne(data)
+    return this.model.create(data);
   }
 
   async insertMany(data) {
-    const collection = await MongoHelper.getCollection(this.collectionName)
-    return collection.insertMany(data)
+    return this.model.insertMany(data);
   }
 
-
   // UPDATE
-  async findAndModify(query) {
-    const collection = await MongoHelper.getCollection(this.collectionName)
-    return collection.findAndModify(query);
+  async findAndModify(id, data) {
+    return this.model.findByIdAndUpdate(id, data);
   }
 
   async findOneAndReplace(query, data) {
-    const collection = await MongoHelper.getCollection(this.collectionName)
-    return collection.findOneAndReplace(query, data);
+    return this.model.findOneAndReplace(query, data);
   }
 
   async findOneAndUpdate(query, data) {
-    const collection = await MongoHelper.getCollection(this.collectionName)
-    return collection.findOneAndUpdate(query, data);
+    return MongoHelper.mapper(
+      await this.model.findOneAndUpdate(query, data).exec()
+    );
   }
 
   // DELETE
   async deleteOne(query) {
-    const collection = await MongoHelper.getCollection(this.collectionName)
-    return collection.deleteOne(query);
+    return this.model.deleteOne(query);
   }
 
   async deleteMany(query) {
-    const collection = await MongoHelper.getCollection(this.collectionName)
-    return collection.deleteMany(query);
+    return this.model.deleteMany(query);
   }
 
   async findOneAndDelete(query) {
-    const collection = await MongoHelper.getCollection(this.collectionName)
-    return collection.findOneAndDelete(query);
+    return this.model.findOneAndDelete(query).exec();
   }
 }
