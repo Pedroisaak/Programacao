@@ -1,29 +1,30 @@
 import MongoDBRepository from "../../../sharred/adapters/mongodb-repository-adapter";
+import { AboutUsModel } from "../model/AboutUs";
 
 export class AboutUsRepository {
   private repository: any;
 
-  constructor(repository: any) {
-    this.repository = new MongoDBRepository('aboutUs');
+  constructor() {
+    this.repository = new MongoDBRepository(AboutUsModel);
   }
 
-  async list(data): Promise<any> {
-    return this.repository.find(data)
+  async list(data = {}): Promise<any> {
+    return this.repository.find()
   }
 
   async create(data): Promise<any> {
-    return this.repository.insertOne(data)
+    return this.repository.insertOne(data);
   }
-  
+
   async show(id): Promise<any> {
-    return this.repository.findOne({ _id: id })
+    return this.repository.findById(id);
   }
-  
+
   async update(id, data): Promise<any> {
-    return this.repository.findOneAndUpdate(id, data)
+    return this.repository.findOneAndUpdate(id, data);
   }
-  
+
   async delete(id): Promise<any> {
-    return this.repository.findOneAndDelete({ _id: id })
+    return this.repository.findOneAndDelete({ _id: id });
   }
 }

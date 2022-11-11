@@ -1,5 +1,5 @@
 import app from "./server";
-import logger from "./sharred/helpers/logger";
+import logger from "./sharred/services/logger";
 
 const port = process.env.PORT || 3000;
 

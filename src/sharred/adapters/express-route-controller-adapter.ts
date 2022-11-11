@@ -1,20 +1,44 @@
-import { Request, Response } from 'express'
-import { HttpRequest, HttpResponse } from '../protocols'
+import { Request, Response } from "express";
+import { HTTP_CODES } from "../consts/http-codes";
+import { HttpRequest, HttpResponse } from "../protocols";
+import { validateRequest } from "../services/validate-request";
 
-type ControllerType = (arg0: any) => HttpResponse | PromiseLike<HttpResponse>
+type ControllerType = (arg0: any) => HttpResponse | PromiseLike<HttpResponse>;
 
-export const Controller = (controller: ControllerType) => {
-  return async (req: Request, res: Response) => {
+export const Controller = (controller: ControllerType, schema?: any) => {
+  return async (request: Request, response: Response) => {
     const httpRequest: HttpRequest = {
-      body: req.body
-    }
-    const httpResponse: HttpResponse = await controller(httpRequest)
+      body: request.body,
+      query: request.query,
+      params: request.params,
+    };
 
-    if (httpResponse.statusCode !== 200) {
-      res.status(httpResponse.statusCode).json({
-        error: httpResponse.body.message
-      })
+    if (schema) {
+      const { error } = await validateRequest(schema, httpRequest);
+      if (error) {
+        response.status(HTTP_CODES.UNPROCESSABLE_ENTITY).json({
+          error,
+        });
+        return;
+      }
     }
-    res.status(httpResponse.statusCode).json(httpResponse.body)
-  }
-}
+
+    const { statusCode, errorMessage, body }: HttpResponse = await controller(
+      httpRequest
+    );
+
+    if (statusCode === HTTP_CODES.NOT_CONTENT) {
+      response.status(HTTP_CODES.NOT_CONTENT).json();
+      return;
+    }
+
+    if (statusCode !== HTTP_CODES.OK) {
+      response.status(statusCode).json({
+        error: errorMessage,
+      });
+      return;
+    }
+
+    response.status(statusCode).json(body);
+  };
+};

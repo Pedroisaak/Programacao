@@ -1,11 +1,19 @@
-import mongoose, { Collection } from "mongoose";
+import mongoose, { Collection, Connection, Schema } from "mongoose";
+import logger from "../services/logger";
+
+const DEFAULT_MONGO_URL = process.env.MONGO_URL || "";
 
 export const MongoHelper = {
   client: null,
   uri: null,
-  async connect(uri: string): Promise<void> {
-    this.uri = uri;
-    this.client = await mongoose.createConnection(uri, {}).asPromise();
+
+  async connect(uri = DEFAULT_MONGO_URL): Promise<void> {
+    try {
+      await mongoose.connect(uri, {});
+      logger.info('MongoDB connected')
+    } catch (error) {
+      console.log(error)
+    }
   },
 
   async disconnect(): Promise<void> {
@@ -14,16 +22,11 @@ export const MongoHelper = {
   },
 
   getConnectionState() {
-    return mongoose.STATES[mongoose.connection.readyState]
-  },
-
-  async getCollection(name: string): Promise<Collection> {
-    if (this.getConnectionState() !== 'connected') await this.connect(this.uri);
-    return this.client.collection(name);
+    return mongoose.STATES[mongoose.connection.readyState];
   },
 
   mapper: (collection: any): any => {
-    const { _id, ...collectionWithoutId } = collection;
+    const { _doc: { _id, __v, ...collectionWithoutId } } = collection;
     return { id: _id, ...collectionWithoutId };
   },
 };
