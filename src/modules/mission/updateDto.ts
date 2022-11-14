@@ -3,5 +3,4 @@ interface IUpdateDTO {
   description?: string;
   asset?: string;
 }
-
 export { IUpdateDTO };
