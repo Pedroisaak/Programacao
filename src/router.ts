@@ -3,6 +3,7 @@ import { Express, Router } from "express";
 import authRoutes from "./modules/auth/routes";
 import aboutUsRoutes from "./modules/aboutUs/routes";
 import missionRoutes from "./modules/mission/routes"
+import portfolioRoutes from "./modules/portfolio/routes"
 import { listRoutes } from "./sharred/output/list-routes";
 
 export default (app: Express) => {
@@ -11,7 +12,8 @@ export default (app: Express) => {
   app.use('/api', [
     authRoutes(router),
     aboutUsRoutes(router),
-    missionRoutes(router)
+    missionRoutes(router),
+    portfolioRoutes(router)
   ]);
 
   listRoutes(router, '/api')
