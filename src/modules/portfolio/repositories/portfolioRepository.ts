@@ -1,14 +1,30 @@
-import { Model } from "mongoose";
-import { PortfolioModel } from "../model/Portifolio"
+import MongoDBRepository from "../../../sharred/adapters/mongodb-repository-adapter";
+import { PortfolioModel } from "../model/Portfolio";
 
 export class PortfolioRepository {
-  private repository: Model<any>;
+  private repository: any;
 
-  constructor(repository: Model<any>) {
-    this.repository = repository;
+  constructor() {
+    this.repository = new MongoDBRepository(PortfolioModel);
   }
 
-  async createPortfolio(): Promise<void> {}
-  async updatePortfolio(): Promise<void> {}
-  async deletePortfolio(): Promise<void> {}
+  async list(data = {}): Promise<any> {
+    return this.repository.find()
+  }
+
+  async create(data): Promise<any> {
+    return this.repository.insertOne(data);
+  }
+
+  async show(id): Promise<any> {
+    return this.repository.findById(id);
+  }
+
+  async update(id, data): Promise<any> {
+    return this.repository.findOneAndUpdate(id, data);
+  }
+
+  async delete(id): Promise<any> {
+    return this.repository.findOneAndDelete({ _id: id });
+  }
 }
