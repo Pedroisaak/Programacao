@@ -1,14 +1,30 @@
-import { Model } from "mongoose";
-import { TestmonialsModel } from "../model/Testmonials"
+import MongoDBRepository from "../../../sharred/adapters/mongodb-repository-adapter";
+import { TestmonialsModel } from "../model/Testmonials";
 
 export class TestmonialsRepository {
-  private repository: Model<any>;
+  private repository: any;
 
-  constructor(repository: Model<any>) {
-    this.repository = repository;
+  constructor() {
+    this.repository = new MongoDBRepository(TestmonialsModel);
   }
 
-  async createTestmonials(): Promise<void> {}
-  async updateTestmonials(): Promise<void> {}
-  async deleteTestmonials(): Promise<void> {}
+  async list(data = {}): Promise<any> {
+    return this.repository.find()
+  }
+
+  async create(data): Promise<any> {
+    return this.repository.insertOne(data);
+  }
+
+  async show(id): Promise<any> {
+    return this.repository.findById(id);
+  }
+
+  async update(id, data): Promise<any> {
+    return this.repository.findOneAndUpdate(id, data);
+  }
+
+  async delete(id): Promise<any> {
+    return this.repository.findOneAndDelete({ _id: id });
+  }
 }
