@@ -1,5 +1,6 @@
 import { Express, Router } from "express";
 
+import userRoutes from "./modules/users/routes";
 import authRoutes from "./modules/auth/routes";
 import aboutUsRoutes from "./modules/aboutUs/routes";
 import missionRoutes from "./modules/mission/routes"
@@ -13,6 +14,7 @@ export default (app: Express) => {
 
   app.use('/api', [
     authRoutes(router),
+    userRoutes(router),
     aboutUsRoutes(router),
     missionRoutes(router),
     portfolioRoutes(router),
