@@ -9,6 +9,9 @@ import testmonialsRoutes from "./modules/testmonials/routes"
 import contactUsRoutes from "./modules/contactUs/routes"
 import { listRoutes } from "./sharred/output/list-routes";
 
+import { upload } from "./sharred/services/uploader";
+
+
 export default (app: Express) => {
   const router = Router();
 
@@ -21,6 +24,12 @@ export default (app: Express) => {
     testmonialsRoutes(router),
     contactUsRoutes(router)
   ]);
+
+  app.post('/api/v1/import', upload.single('teste'), (req, res) => {
+    const file = req.file;
+    console.log('uploaded');
+    res.json(file);
+  });
 
   listRoutes(router, '/api')
 };
