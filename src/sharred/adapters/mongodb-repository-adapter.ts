@@ -6,11 +6,11 @@ export default class MongoDBRepository {
   }
 
   // FIND
-  async find(query) {
+  async find(query: any) {
     return (await this.model.find(query).exec()).map(MongoHelper.mapper);
   }
 
-  async findOne(query) {
+  async findOne(query: any) {
     try {
       const document = await this.model.findOne(query).exec();
       return MongoHelper.mapper(document);
@@ -19,7 +19,7 @@ export default class MongoDBRepository {
     }
   }
 
-  async findById(query) {
+  async findById(query: any) {
     try {
       return MongoHelper.mapper(await this.model.findById(query).exec());
     } catch (error) {
@@ -28,39 +28,39 @@ export default class MongoDBRepository {
   }
 
   // INSERT
-  async insertOne(data) {
+  async insertOne(data: any) {
     return this.model.create(data);
   }
 
-  async insertMany(data) {
+  async insertMany(data: any) {
     return this.model.insertMany(data);
   }
 
   // UPDATE
-  async findAndModify(id, data) {
+  async findAndModify(id: string, data: any) {
     return this.model.findByIdAndUpdate(id, data);
   }
 
-  async findOneAndReplace(query, data) {
+  async findOneAndReplace(query: any, data: any) {
     return this.model.findOneAndReplace(query, data);
   }
 
-  async findOneAndUpdate(query, data) {
+  async findOneAndUpdate(query: any, data: any) {
     return MongoHelper.mapper(
       await this.model.findOneAndUpdate(query, data).exec()
     );
   }
 
   // DELETE
-  async deleteOne(query) {
+  async deleteOne(query: any) {
     return this.model.deleteOne(query);
   }
 
-  async deleteMany(query) {
+  async deleteMany(query: any) {
     return this.model.deleteMany(query);
   }
 
-  async findOneAndDelete(query) {
+  async findOneAndDelete(query: any) {
     return this.model.findOneAndDelete(query).exec();
   }
 }
