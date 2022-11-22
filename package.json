@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/index.ts",
-    "build": "npx tsc",
-    "start": "npm run build && node --inspect dist/index.js"
+    "start": "node --inspect ./dist/index.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

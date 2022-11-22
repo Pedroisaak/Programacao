@@ -1,5 +1,6 @@
 require("dotenv").config();
-import * as express from 'express';
+// @ts-ignore
+import express from 'express';
 import { bootstrapApp } from "./sharred/bootstrap";
 
 const app = express();

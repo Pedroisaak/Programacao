@@ -5,7 +5,7 @@ const DEFAULT_MONGO_URL = process.env.MONGO_URL || "";
 
 export const MongoHelper = {
   client: null as any,
-  uri: null,
+  uri: null as any,
 
   async connect(uri = DEFAULT_MONGO_URL): Promise<void> {
     try {
