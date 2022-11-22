@@ -3,8 +3,9 @@
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
-    "scripts": {
-        "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/index.ts"
+    "scripts": "scripts": {
+      "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/index.ts",
+      "start": "npx ts-node-dev --quiet --transpile-only --ignore-watch node_modules --respawn src/index.ts"
     },
     "devDependencies": {
         "@types/cors": "^2.8.12",
