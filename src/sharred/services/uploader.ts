@@ -15,13 +15,11 @@ const storage = multer.diskStorage({
 export const upload = multer({
   storage: storage,
   fileFilter: function (req, file, cb) {
-    if (
-      file.mimetype.split("/")[1] === "png" ||
-      file.mimetype.split("/")[1] === "jpg" ||
-      file.mimetype.split("/")[1] === "jpeg") {
+    const types = /png|jpg|jpeg|webp|gif|webp|svg/.test(file.mimetype)
+    if (types) {
       cb(null, true);
     } else {
-      cb(new Error("Not a Image File!!"), false);
+      cb(new Error("Not a supported File!!"), false);
     }
   },
 });

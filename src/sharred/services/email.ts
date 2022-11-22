@@ -13,24 +13,24 @@ interface emailData {
 export function sendEmailService(body: emailData): void {
 
   //server para testes usando fake smtp https://mailtrap.io/
-  const transporter = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: "2befa4c6175ef9",
-      pass: "51c5f27b31c294"
-    },
-    tls: { rejectUnauthorized: false }
-  })
-  //server usando o smtp do gmail
   /*   const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: "smtp.mailtrap.io",
+      port: 2525,
+      secure: false, // true for 465, false for other ports
       auth: {
-        user: 'rembrandtechnoreply@gmail.com',
-        pass: process.env.EMAILSERVICE
-      }
-    }); */
+        user: "2befa4c6175ef9",
+        pass: "51c5f27b31c294"
+      },
+      tls: { rejectUnauthorized: false }
+    }) */
+  //server usando o smtp do gmail
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'rembrandtechnoreply@gmail.com',
+      pass: process.env.EMAILSERVICE
+    }
+  });
 
   const mailOptions = {
     from: body.from,

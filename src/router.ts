@@ -25,7 +25,7 @@ export default (app: Express) => {
     contactUsRoutes(router)
   ]);
 
-  app.post('/api/v1/import', upload.single('teste'), (req, res) => {
+  app.post('/api/v1/import', upload.single('imagem'), (req, res) => {
     const file = req.file;
     console.log('uploaded');
     res.json(file);
