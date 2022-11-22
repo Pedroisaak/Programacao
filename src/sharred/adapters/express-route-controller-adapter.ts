@@ -11,6 +11,7 @@ export const Controller = (controller: ControllerType, schema?: any) => {
       body: request.body,
       query: request.query,
       params: request.params,
+      file: request.file
     };
 
     if (schema) {
