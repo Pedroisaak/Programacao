@@ -10,9 +10,9 @@ export const MongoHelper = {
   async connect(uri = DEFAULT_MONGO_URL): Promise<void> {
     try {
       await mongoose.connect(uri, {});
-      logger.info('MongoDB connected')
+      logger.info("MongoDB connected");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   },
 
@@ -26,7 +26,9 @@ export const MongoHelper = {
   },
 
   mapper: (collection: any): any => {
-    const { _doc: { _id, __v, ...collectionWithoutId } } = collection;
+    const {
+      _doc: { _id, __v, ...collectionWithoutId },
+    } = collection;
     return { id: _id, ...collectionWithoutId };
   },
 };

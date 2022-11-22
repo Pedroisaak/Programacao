@@ -1,0 +1,56 @@
+# fly.toml file generated for rem-site-api on 2022-11-17T21:04:21-03:00
+
+app = "rem-site-api"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[env]
+  PROJECT_NAME="rembrandtech-site-api"
+  NODE_ENV="production"
+  JWT_SECRET="j3FcjdNefoM78C$b"
+  PORT="3001"
+  FROM_MAIL="contato@rembrandtech.com.br"
+  STORAGE_DRIVER="disk"
+  CHANGEPASS_VALID_TIME="30"
+  SMTP_HOST="localhost"
+  SMTP_PORT="587"
+  MONGO_PORT="27017"
+  MONGO_USERNAME="rembrandtech"
+  MONGO_PASSWORD="cY97FSsp?pBn9N?T"
+  MONGO_DB_NAME="rembrandtech-site"
+  MONGO_URL="mongodb+srv://rembrandtech:jxPztVmWyVLTwvbk@cluster0.bjgoa5y.mongodb.net/?retryWrites=true&w=majority"
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+  http_checks = []
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+[[services.ports]]
+  force_https = true
+  handlers = ["http"]
+  port = "80"
+
+[[services.ports]]
+  handlers = ["tls", "http"]
+  port = "443"
+
+[[services.tcp_checks]]
+  grace_period = "30s"
+  interval = "15s"
+  restart_limit = 0
+  timeout = "2s"
+
+[build]
+  builder = "paketobuildpacks/builder:base"
+  buildpacks = ["gcr.io/paketo-buildpacks/nodejs"]
