@@ -1,3 +1,5 @@
+import { FileArray } from "express-fileupload"
+
 export interface HttpResponse {
   statusCode: number
   errorMessage?: any
@@ -8,5 +10,5 @@ export interface HttpRequest {
   body?: any
   query?: any
   params?: any
-  file?: any
+  files?: FileArray
 }

@@ -1,25 +1,47 @@
 import crypto from "crypto";
-import multer from 'multer';
+import fs from "node:fs/promises";
+import { UPLOAD_DIR } from "../consts/files";
+import logger from "./logger";
 
-const storage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, './public/files');
-  },
-  filename: (request, file, callback) => {
-    const fileHash = crypto.randomBytes(16).toString("hex");
-    const fileName = `${fileHash}-${file.originalname}`;
-    return callback(null, fileName);
-  }
-});
+const getFileName = (file: any) => {
+  const fileHash = crypto.randomBytes(16).toString("hex");
+  const fileType = file.mimetype.split('/')[1]
+  const clearName = file.name.replace(fileType, '').replace(/[\s|\.]/g,'')
+  return `${clearName}-${fileHash}.${fileType}`;
+};
 
-export const upload = multer({
-  storage: storage,
-  fileFilter: function (req, file, cb) {
-    const types = /png|jpg|jpeg|webp|gif|webp|svg/.test(file.mimetype)
-    if (types) {
-      cb(null, true);
-    } else {
-      cb(new Error("Not a supported File!!"), false);
+const createFolderIfNotExists = async () => {
+  if (await !fs.access(UPLOAD_DIR)) {
+    try {
+      await fs.mkdir(UPLOAD_DIR, { recursive: true });
+      logger.info(`${UPLOAD_DIR} created!`);
+    } catch (error) {
+      logger.error(error, "Error to create UPLOAD DIR");
     }
-  },
-});
+    logger.info("UPLOAD DIR exists");
+  }
+};
+
+export const upload = async (file: any) => {
+  let errorMsg = ""
+  let fileName = ""
+  try {    
+    await createFolderIfNotExists();
+  
+    fileName = getFileName(file);
+    file.mv(`${UPLOAD_DIR}/${fileName}`, (err: any) => {
+      if (err) {
+        logger.error(err, "Error to upload");
+        errorMsg = "Error to upload"
+      }
+      logger.info(`File uploaded: ${fileName}`)
+    });
+  
+    return { fileName, error: errorMsg }
+  } catch (err) {
+    errorMsg = "Error to upload"
+    logger.error(err, errorMsg);
+    return { fileName, error: errorMsg }
+  }
+
+};
