@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { HTTP_CODES } from "../consts/http-codes";
 import { HttpRequest, HttpResponse } from "../protocols";
+import { upload } from "../services/uploader";
 import { validateRequest } from "../services/validate-request";
 
 type ControllerType = (arg0: any) => HttpResponse | PromiseLike<HttpResponse>;
@@ -11,7 +12,7 @@ export const Controller = (controller: ControllerType, schema?: any) => {
       body: request.body,
       query: request.query,
       params: request.params,
-      file: request.file
+      files: request.files ?? undefined,
     };
 
     if (schema) {
@@ -22,6 +23,18 @@ export const Controller = (controller: ControllerType, schema?: any) => {
         });
         return;
       }
+    }
+
+    if (httpRequest?.files?.image) {
+      const { error, fileName } = await upload(httpRequest.files.image);
+      if (error) {
+        response.status(HTTP_CODES.UNPROCESSABLE_ENTITY).json({
+          error,
+        });
+        return;
+      }
+
+      httpRequest.body.asset = fileName;
     }
 
     const { statusCode, errorMessage, body }: HttpResponse = await controller(

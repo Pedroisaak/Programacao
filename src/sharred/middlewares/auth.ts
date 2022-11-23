@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import jwt from "jwt-simple";
+import * as jwt from "jwt-simple";
 import { badRequest, unauthorized } from "../services/http-helper";
 
 const secret = process.env.JWT_SECRET || "SECRET";

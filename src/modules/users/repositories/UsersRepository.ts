@@ -1,4 +1,3 @@
-import { now } from "mongoose";
 import MongoDBRepository from "../../../sharred/adapters/mongodb-repository-adapter";
 import { UserModel } from "../model/User";
 
@@ -13,19 +12,19 @@ export class UsersRepository {
     return this.repository.find()
   }
 
-  async create(data): Promise<any> {
+  async create(data: any): Promise<any> {
     return this.repository.insertOne(data);
   }
 
-  async show(id): Promise<any> {
+  async show(id: string): Promise<any> {
     return this.repository.findById(id);
   }
 
-  async update(id, data): Promise<any> {
+  async update(id: string, data: any): Promise<any> {
     return this.repository.findOneAndUpdate(id, data)
   }
 
-  async delete(id): Promise<any> {
+  async delete(id: string): Promise<any> {
     return this.repository.findOneAndDelete({ _id: id });
   }
 }

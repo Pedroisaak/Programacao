@@ -108,3 +108,4 @@ dist
 # Images and files
 public/images/
 public/files/
+tmp

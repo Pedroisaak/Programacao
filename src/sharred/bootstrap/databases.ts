@@ -1,6 +1,10 @@
-import { MongoHelper } from "../db/mongoDb"
-import logger from '../services/logger'
+import { MongoHelper } from "../db/mongoDb";
+import logger from "../services/logger";
 
 export default async function setupDatabases() {
-    await MongoHelper.connect()
+  try {
+    await MongoHelper.connect();
+  } catch (error) {
+    logger.error(error);
+  }
 }

@@ -1,11 +1,11 @@
-import mongoose, { Collection, Connection, Schema } from "mongoose";
+import mongoose from "mongoose";
 import logger from "../services/logger";
 
 const DEFAULT_MONGO_URL = process.env.MONGO_URL || "";
 
 export const MongoHelper = {
-  client: null,
-  uri: null,
+  client: null as any,
+  uri: null as any,
 
   async connect(uri = DEFAULT_MONGO_URL): Promise<void> {
     try {
@@ -17,7 +17,7 @@ export const MongoHelper = {
   },
 
   async disconnect(): Promise<void> {
-    await this.client.close();
+    await this?.client?.close?.();
     this.client = null;
   },
 
