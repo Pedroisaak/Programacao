@@ -37,7 +37,7 @@ export const Controller = (controller: ControllerType, schema?: any) => {
       httpRequest.body.asset = fileName;
     }
 
-    const { statusCode, errorMessage, body }: HttpResponse = await controller(
+    const { statusCode = HTTP_CODES.OK, errorMessage = '', body }: HttpResponse = await controller(
       httpRequest
     );
 

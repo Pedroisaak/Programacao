@@ -1,68 +1,34 @@
 import nodemailer from "nodemailer";
 import logger from "../../sharred/services/logger";
-import path from 'path';
-import hbs from 'nodemailer-express-handlebars';
+import { EMAIL_CONFIGURATION } from "../consts/email";
+import { templateConstructorlService } from "./template-constructor";
 
 interface emailData {
-  from: string,
-  to: string,
-  subject: string
-  text: string
+  from: string;
+  to: string;
+  subject: string;
+  text: string;
 }
 
-export function sendEmailService(body: emailData): void {
+export function sendEmailService(body: emailData, templateName: string): void {
+  try {
+    const transporter = nodemailer.createTransport(EMAIL_CONFIGURATION);
+    const template = templateConstructorlService(templateName, body);
 
-  //server para testes usando fake smtp https://mailtrap.io/
-  /*   const transporter = nodemailer.createTransport({
-      host: "smtp.mailtrap.io",
-      port: 2525,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: "2befa4c6175ef9",
-        pass: "51c5f27b31c294"
-      },
-      tls: { rejectUnauthorized: false }
-    }) */
-  //server usando o smtp do gmail
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'rembrandtechnoreply@gmail.com',
-      pass: process.env.EMAILSERVICE
-    }
-  });
+    const mailOptions = {
+      from: process.env.EMAIL_FROM,
+      sender: process.env.EMAIL_FROM,
+      to: body.to,
+      subject: body.subject || `[rembrandtech contact]`,
+      html: template,
+    };
 
-  const mailOptions = {
-    from: body.from,
-    to: body.to,
-    subject: body.subject,
-    template: 'welcome',
-    text: body.text,
-  };
-
-
-  const handlebarOptions = {
-    viewEngine: {
-      partialsDir: path.resolve('./src/sharred/templates/email-templates/'),
-      defaultLayout: false,
-    },
-    viewPath: path.resolve('./src/sharred/templates/email-templates/'),
-  };
-
-  // use a template file with nodemailer
-  transporter.use('compile', hbs(handlebarOptions))
-
-  transporter.sendMail(mailOptions, (err, info) => {
-    if (err)
-      logger.info(err)
-    else
-      logger.info(info);
-  });
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) logger.error(err);
+      // logger.info(info);
+      logger.info("Email sent");
+    });
+  } catch (error) {
+    logger.error(error, "Error to sent email");
+  }
 }
-
-
-
-
-
-
-
