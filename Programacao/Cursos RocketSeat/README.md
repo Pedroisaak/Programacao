@@ -126,6 +126,7 @@
 - [x] Concluído a atividade 1 - Conceitos do NodeJS 
 - [x] Concluído a atividade 2 - Trabalhando com Middlewares
 - [x] Concuiido a atividade 3 - Corrigindo Código JS
+- [x] Concuiido a atividade 3 - Corrigindo Código JS
 
 - [x] Concluído o capitulo 2 do NodeJS
 - [x] Concluído a atividade 1 - Introdução ao SOLID
