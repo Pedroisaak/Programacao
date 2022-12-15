@@ -1,13 +1,34 @@
-import { Model } from "mongoose";
+import MongoDBRepository from "../../../sharred/adapters/mongodb-repository-adapter";
+import { AuthModel } from "../model/Auth";
 
-export class UsersRepository {
-  private repository: Model<any>;
+export class AuthRepository {
+  private repository: any;
 
-  constructor(repository: Model<any>) {
-    this.repository = repository;
+  constructor() {
+    this.repository = new MongoDBRepository(AuthModel);
   }
 
-  findById(): any {}
-  findByEmail(): any {}
-  resetPassword(): any {}
+  async list(data = {}): Promise<any> {
+    return this.repository.find()
+  }
+
+  async search(query = {}): Promise<any> {
+    return this.repository.search(query)
+  }
+
+  async create(data: any): Promise<any> {
+    return this.repository.insertOne(data);
+  }
+
+  async show(id: string): Promise<any> {
+    return this.repository.findById(id);
+  }
+
+  async update(id: string, data: any): Promise<any> {
+    return this.repository.findOneAndUpdate(id, data)
+  }
+
+  async delete(id: string): Promise<any> {
+    return this.repository.findOneAndDelete({ _id: id });
+  }
 }

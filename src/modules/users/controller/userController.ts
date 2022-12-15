@@ -1,5 +1,5 @@
 import { HttpRequest, HttpResponse } from "../../../sharred/protocols";
-import { created, notContent, ok, serverError } from "../../../sharred/services/http-helper";
+import { badRequest, created, notContent, ok, serverError } from "../../../sharred/services/http-helper";
 import logger from "../../../sharred/services/logger";
 import { UsersRepository } from "../repositories/UsersRepository";
 import { sendWelcomeEmail } from "../service/userService";
@@ -17,12 +17,19 @@ export async function listUser(): Promise<HttpResponse> {
 
 export async function createUser({ body }: HttpRequest): Promise<HttpResponse> {
   const repository = new UsersRepository();
+
+  const validateEmail = await repository.findByEmail(body.email);
+  if (validateEmail) {
+    logger.error("Email Already Exists!");
+    return badRequest("Email Already Exists");
+  }
+
   try {
     await repository.create(body);
     await sendWelcomeEmail(body);
     return created();
   } catch (error) {
-    logger.error(error)
+    logger.error(error);
     return serverError();
   }
 }

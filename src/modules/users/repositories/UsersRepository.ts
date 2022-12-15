@@ -16,6 +16,10 @@ export class UsersRepository {
     return this.repository.insertOne(data);
   }
 
+  async findByEmail(email: string): Promise<any> {
+    return this.repository.findOne({ email });
+  }
+
   async show(id: string): Promise<any> {
     return this.repository.findById(id);
   }
