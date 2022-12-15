@@ -6,7 +6,11 @@ const ContactUsShema = new mongoose.Schema({
   email: { type: String, required: true },
   description: { type: String, required: true },
 
-});
+},
+  {
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
+  }
+);
 
 const ContactUsModel = mongoose.model("ContactUs", ContactUsShema);
 export { ContactUsModel };
