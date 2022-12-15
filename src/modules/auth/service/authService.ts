@@ -28,6 +28,6 @@ export async function sendForgotPasswordEmail({ user, token }: any) {
   return sendEmail({
     config,
     data,
-    templateName: "welcome",
+    templateName: "forgot-password",
   });
 }
