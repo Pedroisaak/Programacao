@@ -1,20 +1,27 @@
 import mongoose from "mongoose";
+import { encryptPassword } from "../service/userService";
 
-const UserShema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
-  created_at: { type: Date },
-  is_Admin: { type: Boolean }
-});
+  password: { type: String, required: true },
+  is_Admin: { type: Boolean, default: false }
 
-UserShema.pre('save', function (next) {
-  const now = new Date();
-  this.is_Admin = false
-  if (!this.created_at) {
-    this.created_at = now;
+},
+  {
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
   }
-  next();
+);
+UserSchema.pre("save", async function save(next) {
+  if (!this.isModified("password")) return next();
+  try {
+    this.password = await encryptPassword(this.password);
+    return next();
+  } catch (err: any) {
+    return next(err);
+  }
 });
 
-const UserModel = mongoose.model("User", UserShema);
+
+const UserModel = mongoose.model("User", UserSchema);
 export { UserModel };

@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import logger from "../../sharred/services/logger";
 import { EMAIL_CONFIGURATION } from "../consts/email";
-import { templateConstructorlService } from "./template-constructor";
+import { templateConstructorService } from "./template-constructor";
 
 interface emailData {
   from: string;
@@ -10,22 +10,44 @@ interface emailData {
   text: string;
 }
 
-export function sendEmailService(body: emailData, templateName: string): void {
+interface emailData {
+  config: {
+    from?: string;
+    sender?: string;
+    email: string;
+    subject: string;
+  };
+  data: any;
+  templateName: string;
+}
+
+interface emailData {
+  config: {
+    from?: string;
+    sender?: string;
+    email: string;
+    subject: string;
+  };
+  data: any;
+  templateName: string;
+}
+
+export function sendEmail({ config, data, templateName }: emailData): void {
   try {
     const transporter = nodemailer.createTransport(EMAIL_CONFIGURATION);
-    const template = templateConstructorlService(templateName, body);
+    const template = templateConstructorService(templateName, data);
 
     const mailOptions = {
-      from: process.env.EMAIL_FROM,
-      sender: process.env.EMAIL_FROM,
-      to: body.to,
-      subject: body.subject || `[rembrandtech contact]`,
+      from: config.from || process.env.EMAIL_FROM,
+      sender: config.sender || process.env.EMAIL_FROM,
+      to: config.email,
+      subject: config.subject,
       html: template,
     };
 
     transporter.sendMail(mailOptions, (err, info) => {
       if (err) logger.error(err);
-      // logger.info(info);
+      logger.info(info);
       logger.info("Email sent");
     });
   } catch (error) {
