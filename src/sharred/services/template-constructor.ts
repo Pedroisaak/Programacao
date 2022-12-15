@@ -4,7 +4,7 @@ import handlebars from "handlebars";
 import logger from "./logger";
 
 const TEMPLATE_FOLDER = "./src/sharred/templates/email-templates/";
-export const templateConstructorlService = (
+export const templateConstructorService = (
   templateName: string,
   data: any
 ) => {
