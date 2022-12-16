@@ -17,8 +17,25 @@ export const MongoHelper = {
   },
 
   async disconnect(): Promise<void> {
-    await this?.client?.close?.();
+    mongoose.connection.close(false, () => {
+      logger.info("MongoDb connection closed.");
+    });
     this.client = null;
+  },
+
+  async clearDatabase(): Promise<void> {
+    const collections = mongoose.connection.collections;
+    console.log('here', mongoose.connection)
+    for (const key in collections) {
+      const collection = collections[key];
+      await collection.deleteMany({});
+      logger.info(`Collection ${collection.collectionName} cleared`);
+    }
+  },
+
+  async dropDatabase(): Promise<void> {
+    await mongoose.connection.dropDatabase();
+    logger.info("Database dropped");
   },
 
   getConnectionState() {
