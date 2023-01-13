@@ -4,24 +4,6 @@ import { EMAIL_CONFIGURATION } from "../consts/email";
 import { templateConstructorService } from "./template-constructor";
 
 interface emailData {
-  from: string;
-  to: string;
-  subject: string;
-  text: string;
-}
-
-interface emailData {
-  config: {
-    from?: string;
-    sender?: string;
-    email: string;
-    subject: string;
-  };
-  data: any;
-  templateName: string;
-}
-
-interface emailData {
   config: {
     from?: string;
     sender?: string;
