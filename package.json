@@ -8,7 +8,13 @@
     "start": "node --inspect ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clear:db": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/sharred/db/clear-database",
-    "seed": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/sharred/db/seeders/run-seeders"
+    "seed": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/sharred/db/seeders/run-seeders",
+    "up": "docker-compose up -d",
+    "down": "docker-compose down",
+    "build": "tsc",
+    "build:dev": "tsc -w",
+    "lint": "eslint --ext .ts src",
+    "lint:fix": "eslint --ext .ts src --fix"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",

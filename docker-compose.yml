@@ -1,4 +1,4 @@
-version: '3.2'
+version: "3.2"
 
 services:
   mongo:
@@ -9,4 +9,3 @@ services:
       - ./.docker/mongo:/data/db
     ports:
       - "${MONGO_PORT}:27017"
-

@@ -11,7 +11,7 @@ import contactUsRoutes from "./modules/contactUs/routes";
 import { listRoutes } from "./sharred/output/list-routes";
 
 import { upload } from "./sharred/services/uploader";
-import { sendEmailService } from "./sharred/services/email";
+//import { sendEmailService } from "./sharred/services/email";
 import { Controller } from "./sharred/adapters/express-route-controller-adapter";
 import { ok } from "./sharred/services/http-helper";
 
@@ -38,7 +38,7 @@ export default (app: Express) => {
   router.post(
     "/api/v1/email",
     Controller(({ body }: any) => {
-      sendEmailService(body, 'welcome');
+      //sendEmailService(body, 'welcome');
       return ok(body);
     })
   ); // test email
