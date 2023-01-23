@@ -22,6 +22,20 @@ UserSchema.pre("save", async function save(next) {
   }
 });
 
+UserSchema.pre('findOneAndUpdate', async function (next) {
+  // eslint-disable-next-line @typescript-eslint/no-this-alias
+  const self: any = this
+  try {
+    if (self._update.password) {
+      const hashed = await encryptPassword(self._update.password)
+      self._update.password = hashed
+    }
+    next()
+  } catch (err: any) {
+    return next(err)
+  }
+})
+
 
 const UserModel = mongoose.model("User", UserSchema);
 export { UserModel };
