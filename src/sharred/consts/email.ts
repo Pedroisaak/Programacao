@@ -4,8 +4,8 @@ export const EMAIL_CONFIGURATION = process.env.ENVIRONMENT !== 'production' ? {
   port: 2525,
   secure: false, //true for 465, false for other ports
   auth: {
-    user: "2befa4c6175ef9",
-    pass: "51c5f27b31c294",
+    user: process.env.MAILTRAP_USER,
+    pass: process.env.MAILTRAP_PASSWORD,
   },
   tls: { rejectUnauthorized: false },
 } : {

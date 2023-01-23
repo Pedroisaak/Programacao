@@ -1,4 +1,5 @@
 import jwt from "jwt-simple";
+import { AppMessages } from "../../../sharred/consts/AppMessages";
 import { sendEmail } from "../../../sharred/services/email";
 
 export async function generateToken(email: string) {
@@ -16,7 +17,7 @@ export async function verifyToken(token: string) {
 
 export async function sendForgotPasswordEmail({ user, token }: any) {
   const config = {
-    subject: "[Rembrandtech] Confirm Your Reset Password",
+    subject: AppMessages.ForgotEmailSubject,
     email: user.email,
   };
 

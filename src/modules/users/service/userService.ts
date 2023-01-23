@@ -1,5 +1,6 @@
 import { sendEmail } from "../../../sharred/services/email";
 import bcrypt from "bcryptjs";
+import { AppMessages } from "../../../sharred/consts/AppMessages";
 
 
 const SALT_WORK_FACTOR = 10;
@@ -21,7 +22,7 @@ export async function comparePassword(password: string, hash: string) {
 export async function sendWelcomeEmail({ email, name }: any) {
   const config = {
     email,
-    subject: "[Rembrandtech] Welcome",
+    subject: AppMessages.WelcomeEmailSubject,
   };
 
   const data = {

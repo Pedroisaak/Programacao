@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import * as jwt from "jwt-simple";
+import { AppMessages } from "../consts/AppMessages";
 import { badRequest, unauthorized } from "../services/http-helper";
 
 const secret = process.env.JWT_SECRET || "SECRET";
@@ -20,11 +21,11 @@ export function auth(
   try {
     const decoded = jwt.decode(authHeaderValue, secret);
     if (!decoded) {
-      response.send(badRequest("Invalid token"));
+      response.send(badRequest(AppMessages.InvalidToken));
     }
     next();
   } catch (error) {
     console.error(error);
-    response.send(badRequest("Error to decode"));
+    response.send(badRequest(AppMessages.ErrorToDecode));
   }
 }

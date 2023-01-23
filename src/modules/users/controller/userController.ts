@@ -1,3 +1,4 @@
+import { AppMessages } from "../../../sharred/consts/AppMessages";
 import { HttpRequest, HttpResponse } from "../../../sharred/protocols";
 import {
   badRequest,
@@ -26,8 +27,8 @@ export async function createUser({ body }: HttpRequest): Promise<HttpResponse> {
 
   const validateEmail = await repository.findByEmail(body.email);
   if (validateEmail) {
-    logger.error("Email Already Exists!");
-    return badRequest("Email Already Exists");
+    logger.error(AppMessages.EmailAlreadyExists);
+    return badRequest(AppMessages.EmailAlreadyExists);
   }
 
   try {

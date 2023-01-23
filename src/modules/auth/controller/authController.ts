@@ -1,3 +1,4 @@
+import { AppMessages } from "../../../sharred/consts/AppMessages";
 import { HttpRequest, HttpResponse } from "../../../sharred/protocols";
 import {
   badRequest,
@@ -18,7 +19,7 @@ export async function login({ body }: HttpRequest): Promise<HttpResponse> {
   const repository = new UsersRepository();
   const user = (await repository.findByEmail(body.email)) as any | null;
   if (!user) {
-    return badRequest("User not found");
+    return badRequest(AppMessages.UserNotFound);
   }
 
   const passwordIsValid = (await comparePassword(
@@ -26,7 +27,7 @@ export async function login({ body }: HttpRequest): Promise<HttpResponse> {
     user.password
   )) as boolean | null;
   if (!passwordIsValid) {
-    return badRequest("invalid email or password");
+    return badRequest(AppMessages.InvalidLogin);
   }
 
   try {
@@ -45,7 +46,7 @@ export async function verifyIfTokenIsValid({
   body,
 }: HttpRequest): Promise<HttpResponse> {
   const tokenIsValid = await verifyToken(body.token);
-  if (!tokenIsValid) return badRequest("invalid token");
+  if (!tokenIsValid) return badRequest(AppMessages.InvalidToken);
 
   try {
     return notContent();
@@ -61,7 +62,7 @@ export async function forgotPassword({
   const repository = new UsersRepository();
   const user = (await repository.findByEmail(body.email)) as any | null;
   if (!user) {
-    return badRequest("User not found");
+    return badRequest(AppMessages.UserNotFound);
   }
   const token = await generateToken(user.email);
 
@@ -79,12 +80,12 @@ export async function resetPassword({
 }: HttpRequest): Promise<HttpResponse> {
   const { token, email, password } = body;
   const tokenIsValid = await verifyToken(token);
-  if (!tokenIsValid) return badRequest("invalid token");
+  if (!tokenIsValid) return badRequest(AppMessages.InvalidToken);
 
   const repository = new UsersRepository();
   const user = (await repository.findByEmail(email)) as any | null;
   if (!user) {
-    return badRequest("User not found");
+    return badRequest(AppMessages.UserNotFound);
   }
 
   try {
