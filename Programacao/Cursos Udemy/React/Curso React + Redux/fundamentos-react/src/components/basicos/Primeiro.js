@@ -1,5 +1,13 @@
+import React from "react";
+
 function Primeiro() {
-  return "Primeiro Componente";
+  const msg = "Seja Bem-Vindo";
+  return (
+    <div>
+      <h2>Primeiro Componente</h2>
+      <p>{msg}</p>
+    </div>
+  );
 }
 
 export { Primeiro };
