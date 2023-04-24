@@ -5,6 +5,8 @@ import { ComParametro } from "./components/basicos/ComParametro";
 import { Fragmento } from "./components/basicos/Fragmento";
 import { Aleatorio } from "./components/basicos/Aleatorio";
 import { Card } from "./components/layout/Card";
+import { Familia } from "./components/basicos/Familia";
+import { FamiliaMembro } from "./components/basicos/FamiliaMembro";
 import "./App.css";
 
 export function App() {
@@ -27,6 +29,14 @@ export function App() {
 
         <Card titulo="#04 - Desafio Aleatorio" color="#080">
           <Aleatorio min={1} max={1000} />
+        </Card>
+
+        <Card titulo="#05 - Componente com Filhos">
+          <Familia sobrenome="Isaak">
+            <FamiliaMembro nome="Pedro "></FamiliaMembro>
+            <FamiliaMembro nome="Ana "></FamiliaMembro>
+            <FamiliaMembro nome="Lais "></FamiliaMembro>
+          </Familia>
         </Card>
       </div>
     </div>
