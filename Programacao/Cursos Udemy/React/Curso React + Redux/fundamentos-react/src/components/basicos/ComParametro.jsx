@@ -1,14 +1,20 @@
 import React from "react";
 
-function ComParametro(props) {
-  const status = props.nota >= 7 ? "Aprovado" : "Reprovado";
+// interface ComParametroProps {
+//   titulo: string;
+//   aluno?: string;
+//   nota?: number;
+// }
+
+function ComParametro({ nota, titulo, aluno }) {
+  const status = nota >= 70 ? "Aprovado" : "Reprovado";
   return (
     <div>
-      <h2>{props.titulo}</h2>
+      <h2>{titulo}</h2>
       <p>
-        <strong> {props.aluno} </strong>
+        <strong> {aluno} </strong>
         tem nota
-        <strong> {props.nota} </strong> e está
+        <strong> {nota} </strong> e está
         <strong> {status} </strong>
       </p>
     </div>
